@@ -1,0 +1,212 @@
+twilio:
+  accountId: ACb82c27477bb2ca825593acf044af8bbc
+  accountToken: cdc0d2eaad160f9d51ccc8a6882ecd8e
+  numbers:
+    - "+17124236724"
+  nanpaMessagingServiceSid: IMCMES
+  messagingServiceSid: "MGb8f886d20c5a9c78f9819c225bc8d644"
+  localDomain: dichviet.com
+  iosVerificationText: "verification code is - %s"
+  androidNgVerificationText: "verification code is - %s"
+  android202001VerificationText: "verification code is - %s"
+  #android202103VerificationText: "verification code is - %s"
+  genericVerificationText: "verification code is - %s"
+  senderId:
+    defaultSenderId: IMCMES # Sender ID use for country codes not found in either the overrides or omitted lists.
+    countryCodesWithoutSenderId:
+      - vi
+      - en
+
+push:
+  queueSize: 200
+
+# media relay/proxy
+turn:
+  secret: HMMIBvAzRSaS7835iWqZWwX5tMsfIXHG8X9LBcSg7xIIuOkaZORCU5hhXtpFc63Z # TURN server secret
+  uris:
+    - turn:127.0.0.1:8080?transport=tcp
+
+# Redis server configuration for cache cluster
+cacheCluster:
+  urls:
+    - redis://127.0.0.1:7000/
+
+directory:
+  redis: # Redis server configuration for directory cluster
+    url: redis://127.0.0.1:7000/directory
+    replicaUrls:
+       - redis://127.0.0.1:7000/directoryReplica
+  client: # Configuration for interfacing with Contact Discovery Service cluster
+    userAuthenticationTokenSharedSecret: ac7690e7e71c0831f4bd26c2a40712a3 # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+    userAuthenticationTokenUserIdSecret: ba8a2f17bb1dcdff047d6af9cc937b28 # head -c 16 /dev/urandom | hexdump -ve '1/1 "%.2x"'
+  sqs:
+    region: ap-southeast-1
+    accessKey: AKIAQMB42ZSBOZ4W7TK3
+    accessSecret: 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
+    queueUrls:
+      - https://sqs.ap-southeast-1.amazonaws.com/025897389186/signal-sqs.fifo
+  server:
+    -
+      replicationName: test
+      replicationUrl: http://127.0.0.1:9090
+      replicationPassword: password
+      replicationCaCertificate: "-----BEGIN CERTIFICATE-----\n
+      MIIDwzCCAqugAwIBAgIUT3GOSUF/oulVZgvZaQ43bH496h4wDQYJKoZIhvcNAQEL
+      BQAwcTELMAkGA1UEBhMCdmkxCzAJBgNVBAgMAmhuMQ4wDAYDVQQHDAVoYW5vaTEM
+      MAoGA1UECgwDaW1nMRgwFgYDVQQLDA90ZQjDg8KpCAgICAgICAgxCjAIBgNVBAMM
+      AWExETAPBgkqhkiG9w0BCQEWAmtrMB4XDTIxMDYyMzExMTMxMFoXDTMxMDYyMTEx
+      MTMxMFowcTELMAkGA1UEBhMCdmkxCzAJBgNVBAgMAmhuMQ4wDAYDVQQHDAVoYW5v
+      aTEMMAoGA1UECgwDaW1nMRgwFgYDVQQLDA90ZQjDg8KpCAgICAgICAgxCjAIBgNV
+      BAMMAWExETAPBgkqhkiG9w0BCQEWAmtrMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+      MIIBCgKCAQEA398TfDW7cZ4HbbDlwOYVbVchRwPbCcBRRzC1Sw4pXCzn2WaCmaQb
+      aEeqG2c80mnFcYtLRM/HR7oH0Jk8HXZjE8AkNDlypwEkghzbaLrIOyeBFh94gNfn
+      TlgdBEBicy20J6aa6Qlu/LKyx3dCVwQMYqhdCPL4nhlhyCJ3riRhhDOWSZwOBiHl
+      gUf80umDmENNwJNA9K5jPIYLR1b7rO5CvgzhBAKu49h93SKk8B2AviDQkCA6gN3G
+      QIsSscuYE9ELB0HUYO4OJXftZbfNSZjm5RBiHW057cSjNzaKeamOuiw2Mi+VggI5
+      3cqmyLtPoUygXXK1TPjAosFHe9rtqb/crQIDAQABo1MwUTAdBgNVHQ4EFgQUSszS
+      /c7WZswf/PVVp+crGzT4dr0wHwYDVR0jBBgwFoAUSszS/c7WZswf/PVVp+crGzT4
+      dr0wDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAN58mhDFp6DVu
+      mTYP6rebJ+XXdrKt19mtm4KDwCaVQDJp3B176YKXoldevFGp7KxdR2gVZacfi/Vt
+      4B7cBiwcRfk/VAix67GZUZSydFij7VYbN2HkjBLNYjSFJad8UFk6H7S6dUhy4VsQ
+      orjHXfgDS8tvIYDq/m3/jPcJjWL65JWC8fuiQPqe6yZFIWpBYMQ72DFjpA7ppN3I
+      C2N8JFpiPrQD7u0HVLCdFxXP+8rNzpnwNi9LzlOfSrUgZr5dLgdZG9S3eUhOB8En
+      Sdi8BN6ZX59qnWMO7CqY2Av0IpFg8SoH1XnKdA+gtiTpscQ8A42jQ3ea0XKp2QGN
+      QbMvFKxDuA==
+      \n-----END CERTIFICATE-----"
+
+# Redis server configuration for message store cache
+messageCache:
+  cluster:
+    urls:
+      - redis://127.0.0.1:7000/
+
+messageStore: # Postgresql database configuration for message store
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5434/messagedb
+
+metricsCluster:
+  urls:
+    - redis://127.0.0.1:7000/
+
+# AWS S3 configuration
+awsAttachments:
+  accessKey: AKIAQMB42ZSBOZ4W7TK3
+  accessSecret: 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
+  bucket: signal-bucket-server
+  region: ap-southeast-1
+
+# GCP Storage configuration
+gcpAttachments:
+  domain: signal_attachments.storage.googleapis.com
+  email: ios-signal@solar-cycle-335008.iam.gserviceaccount.com
+  maxSizeInBytes: 1000000
+  pathPrefix: 
+  rsaSigningKey: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDkrnwSH1lto2on\nvtpnBfrpBfAWozspCoktxw8aQGDgwAQAlAxZW1EhMti519GH2YOzzx9W2bu0JBCL\njeuLpY6v034O1mBVhQdw3pho19xv7WYsBCA987nIBarYRsMn3e778iYmwaAvq0cB\njIgulUVro+B4mF/8H7IDEOUuShIq1692pbd9WWpnsh33z8TO1kv9DpO+abWSUXWv\nTj5n5OmxZyCmHJWA3pR1hlH+nk6VgLQSX0mNLrTvjuu37OMe7Ku1wR5uzBAg9p6S\nKLUJ2Pm5ZbWVg/E3DKQNgs8ND0LNDzxI22doqLIUfyy9UP3ZLh7caqLmwaQp8RSz\nFi/rPEyzAgMBAAECggEAEKt3d+AOe3jcwCZKyBUeLpEJk1zgGc8ezit4j7Kpso3M\nvONjPbrztbZ900OcOTRDRCmRC0UL8xxokwO2wT3sTNI0mjhJBXLmZp/oqZvdVyYN\nu0pXCgJo7zUajcbQFb6OhpHRniRMh60LRrL2f7l55K1+1iD6vjzr6QqjlOA+usii\n60l07VUGgh/QL0dI76rVA46hpCWXP20Pd4AX7XZWd8pwabviVTYxp87kyqoi/aOu\nFaareNokm7m/UNNEqO+1LlDXCUtDuguOa86MeOTaryoZUgFuU3pnx+VqSU3yZpyy\n2Y8GIGWMYLjjGd27WLNFa5gdTHWIVTHq68ihMFyUgQKBgQD7bcnbjWHOwwnYO1bz\nm2feUHX+8V3pq8BKXg2KzDxyVwV0x7Zg2K/RkbproNOQjKK89nsaZuKScXcQrzlr\nZQ1n72b5ektZi2ZwTR8DGFiomZQbqYk5qBMOt+9ApXyLAUAs83iU3GHGIi0IfMxt\npXSZdXLC48tsrYO90rYrlLaCUQKBgQDo1tMhhYwWJsiWF8/CLnE/9kdHs7kXcE2j\nZGysTvGiG6wuZVl7+a1bd87wpJVaYD+UJyPI3GeQbFG1dQV7gHqx1wjDdNgKQG9c\nY1n8/oFW+2jU7sLl4T6SI3+TnhNpmfxsPRCH2Ael8sDTJ0B6tWgHEhOe5Cid8J/r\nLxBfBkM5wwKBgDEjG7gUwXCvHVVtA2lIjdwczXKtqTTppALkrrDZiVavOxm/jh0P\nPA0w9cXjAHXXhlZ3tUdLpCwKkMJp/EbI0P3nA7Dt/ZvaaoK4D7+DGpCYsyFU2MSz\n3EWcHN39eYGRFQGz83TkPReDxllKSomDNG5pTaxY6ICsyHpom8GYprKBAoGASWsb\nzfEnWADItRMzDp7IVQvaNBDGp05hHMlYvwhxhtVE+Kg6jC4RbMsddKHg+ktpINUq\nonZlLZQKO7Z3kRbVGWiducwJJ0pkEvS89lpl/EBwMNxMlmHs8fXBj5GDu4OzpYmn\nwb3rw3cFOE+jNE4pTDl1+F8nM44hTu5bMituXTMCgYEAoHcfkgZPF2liJLOVBLE3\n10o9TcMhRinwBqZiX2U1ZrUtzr4cF8BfuIRIuENVGiXE1mpB6NxhZ7Gh0OW5+AwJ\nD6m9EgEftdkGKfPefYxv4FvnekJ4MTea3zDwB2sdCnZFUu+3qYo2uvt7QiuRL2FT\nYTZeBF8pwDalffmhcSb03PI=\n-----END PRIVATE KEY-----\n"
+
+# Apple Push Notifications configuration
+apn:
+  sandbox: true
+  bundleId: test
+  keyId: test
+  teamId: test
+  signingKey: "-----BEGIN PRIVATE KEY-----\n
+ MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgP1+nGWHh3RaH+nb3
+nyyBnFEFRBKC2wHAMyReysbrw76hRANCAAQXARcStRH4qYm0qXrg1NCX4LK9kFEK
+Z7RciVQ8W4raxePt40ML+2VQSKUOf4Zkk0nL5MVdZnqOl76cS0Mtf8kl
+  \n-----END PRIVATE KEY-----"
+
+# GCM Configuration
+gcm:
+  senderId: 381700487867
+  apiKey: AAAAWN8fOrs:APA91bFrsnNLz6TFmsqYIUFfBfl7oFCVQTUv1XxkZ4xsxEK75CKqFTYDxN945a7zVL7EZITWZjX-JgkHBKSASBSpxOfAoAn1xUK1N7jYtEKwQugluuP6JrieCKQd5NNfsU1S9hpz44X7
+
+# Micrometer metrics config
+micrometer:
+  uri: proxy://127.0.0.1:8081
+
+remoteConfig:
+  authorizedTokens:
+    - dummy
+  globalConfig:
+    dummy: dummy
+
+featureFlag:
+  authorizedTokens:
+    - test
+
+# The following configs were not found in sample
+
+abuseDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5433/abusedb
+
+accountDatabaseCrawler:
+  chunkSize: 1000
+  chunkIntervalMs : 8000
+
+accountsDatabase:
+  driverClass: org.postgresql.Driver
+  user:        postgres
+  password:    postgres
+  url:         jdbc:postgresql://127.0.0.1:5432/accountdb
+
+backupService:
+  userAuthenticationTokenSharedSecret: 6b9cf1432f4dc50f991bdab29ff44377
+  # uri: redis://127.0.0.1:7000/
+  # backupCaCertificate: test
+
+cdn:
+  accessKey: AKIAQMB42ZSBOZ4W7TK3
+  accessSecret: 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
+  bucket: signal-bucket-server
+  region: ap-southeast-1
+
+paymentsService:
+  userAuthenticationTokenSharedSecret: 6b9cf1432f4dc50f991bdab29ff44377
+
+pubsub:
+  url: redis://127.0.0.1:7000/cache
+  replicaUrls:
+    - redis://127.0.0.1:7000/cacheReplica
+
+pushScheduler:
+  url: redis://127.0.0.1:7000/pushScheduler
+  replicaUrls:
+    - redis://127.0.0.1:7000/pushSchedulerReplica
+
+recaptcha:
+  secret: test
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8081
+  adminConnectors:
+    - type: http
+      port: 8082
+
+storageService:
+  userAuthenticationTokenSharedSecret: 6b9cf1432f4dc50f991bdab29ff44377
+  uri: redis://127.0.0.1:7000/
+  # storageCaCertificate: test
+
+# Generate public and private with: java -jar TextSecureServer.jar certificate -ca
+# Generate certificate with: java -jar TextSecureServer-4.97.jar certificate --key PRIVATE_KEY = --id 1
+unidentifiedDelivery:
+  certificate: CiUIARIhBYEDXQop39f4fjT0jJZc0OzEkSIlMSYwxn+tyf/aCLcZEkBJX8yP4/L5mKIWh64E7TUQiqZ9rsLd3Bcfwi7DOkSF6vXWHReqo30597DO/KepDQnjYxpAMPdLc9oA4uREV6IO  # java -jar TextSecureServer.jar certificate -ca
+  privateKey: cN8BknIl4jlCtTKhjZ7e/nyeVlOYe75+p9ur5t0qpnk=  # java -jar TextSecureServer.jar certificate --key priv_key_from_step_above --id key_ID
+  expiresDays: 365
+
+voiceVerification:
+  url: https://example.com
+  locales:
+    - en
+
+zkConfig:
+  serverSecret: AEG6q+8j4PZ9QkbIgqfbRN/hnC3ABfktUYRW3eqen0UMVpf0j4CLkvkK03A746hcNeolN0Tue5A8YXLfJF2zIgFip9017SzlnjrsAjL/kNAGPHTIGRyW5lCnmG1dLm4DD/SDjJ+DRAJul5NA0yMLEypmNLw4uIJLWx/DdPAXoT8CQWVnk6pVWsJ1spH//9icbn9QJUj2t63ksXoi1gyqyQohY3pYQHLfS2UQ4tzgqGqcAcD3wIpdJWRglYl/hQwaC8coe+wQSIBSLvo4V8EP2D+RPJNcVsXQ7CuD7Zx2suYIGXVZngcFYoK/LgtYO/5fhHusBnrtbnnnYifFAqKztAIAvOTZFqa+8Himg1w7cWiMnzVAubmN5blr2TnLCtPWDnLFw7/n6bWzhelcG00XiZTrrPPuuIimWuJbqOdG3BxAwPJ4h/so52Lb1b0Dm+d0XbTjpXVpPyDT4B+5WDkE2lFG/XSGrZhIUEOq7uOMo4crw2nAcUEtX8JLVA1xFdgoBHZ+uf9L/47lYHhEI9cBWOScYiL31THGlWZH6umOTroPFNSbSVUwjYE/7VTvj7g2/W1PV5zqv4YRiI7fVConVlSYjmAfKldG1Bfu2TQGYRcTclsEK8kQezTYTDHckKfeBn6FRCF7QZU2NNYOq6F3Et2CubPAV8aUSs/S1xrbYCQDC/FmN9h72y2HD9NUqQjd76ks2kUQKaLW5ECKCbQ1AgTNw9zcu1gvZzLB9yhKjfrCd9mhtli/aMMxPjAqKogtB/90MUHD+STAb5Luj5nc2jNbarpKEEWzfo7xDvpPTB4AP5WXYjLcBLhzRrKtpCvc5UrZdNe/sdIKhpvc4ECRtw0OQfyeAXZRf/tsEf4nyg5Y43a5DS1pec0CK3lmQdQ7CswCKen/wXsKNqG8ZJlCi31d98lSfi9fy23wktbwg/4YzD7Q/G3b3aMxS8rlGJ5dOp2Xy0BfdO4441SmhRMpcgNYQrUVk3RGS+m07ZxW5G3zoEObFLyDkpOWpEaqeUbNKg  # java -jar TextSecure.jar zkparams
+  serverPublic: AHLFw7/n6bWzhelcG00XiZTrrPPuuIimWuJbqOdG3BxAwPJ4h/so52Lb1b0Dm+d0XbTjpXVpPyDT4B+5WDkE2lEOQfyeAXZRf/tsEf4nyg5Y43a5DS1pec0CK3lmQdQ7CswCKen/wXsKNqG8ZJlCi31d98lSfi9fy23wktbwg/4YWEK1FZN0RkvptO2cVuRt86BDmxS8g5KTlqRGqnlGzSo  # java -jar TextSecure.jar zkparams
+  enabled: true
